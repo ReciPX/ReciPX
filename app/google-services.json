@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "389977213125",
+    "project_id": "recipx-10cf2",
+    "storage_bucket": "recipx-10cf2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389977213125:android:22db55cb3e87b1f264c8ac",
+        "android_client_info": {
+          "package_name": "com.recipx.recipx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389977213125-ij01bak7di11d9t0gpo0sdaacmuls1l6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz18F0yeaoRCQEMe8jnj1YzYmK2b53yRY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389977213125-ij01bak7di11d9t0gpo0sdaacmuls1l6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

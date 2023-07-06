@@ -3,8 +3,12 @@ package com.recipx.recipx.firebase.user;
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -49,35 +53,41 @@ public class User {
                 });
     }
 
-    public void delete(FirebaseUser user, After after){
+    public void delete(After after){
         String path = "firebase.User.delete - ";
 
-        user.delete().
-                addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        after.success(task);
-                        Log.d(TAG, path+"success");
-                    } else{
-                        after.fail(task);
-                        Log.d(TAG, path+"fail");
-                    }
-                });
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if (user != null){
+            user.delete().
+                    addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            after.success(task);
+                            Log.d(TAG, path+"success");
+                        } else{
+                            after.fail(task);
+                            Log.d(TAG, path+"fail");
+                        }
+                    });
+        } else {
+            Log.d(TAG, path+"login first!");
+        }
+
+
     }
 
     public void login(String email, String password, After after) {
         String path = "firebase.User.login - ";
 
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener((Executor) this, (OnCompleteListener<AuthResult>) task -> {
-                    if (task.isSuccessful()) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, path+"success");
-                        after.success(task);
-                    } else {
-                        Log.w(TAG, path+"fail", task.getException());
-                        after.fail(task);
-                    }
-                });
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Log.d(TAG, path + "success");
+                after.success(task);
+            } else {
+                Log.w(TAG, path + "fail", task.getException());
+                after.fail(task);
+            }
+        });
     }
 
     public void logout(){

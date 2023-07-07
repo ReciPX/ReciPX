@@ -7,10 +7,6 @@
     android:background="#FFFFFF"
     android:clipToOutline="true">
 
-    <!-- Auto layout, variables, and unit scale are not yet supported -->
-
-    <!-- Auto layout, variables, and unit scale are not yet supported -->
-
 
     <TextView
         android:id="@+id/recipx"
@@ -90,11 +86,13 @@
 
     <android.widget.Button
         android:id="@+id/button_login"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rectangle_login"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:text="로그인"
         android:textColor="#FFFFFF"
         android:textSize="20sp"

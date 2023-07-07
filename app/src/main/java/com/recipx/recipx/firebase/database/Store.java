@@ -3,12 +3,14 @@ package com.recipx.recipx.firebase.database;
 import android.content.Context;
 import android.util.Log;
 
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.recipx.recipx.R;
 import com.recipx.recipx.firebase.util.After;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Store {
 
@@ -17,6 +19,8 @@ public class Store {
     private String TAG;
 
     private final String POST = "Post";
+    private final String INGREDIENT = "Ingredient";
+    private final String USER = "User";
 
     public Store(Context mContext) {
         if (mDb == null)
@@ -28,17 +32,49 @@ public class Store {
     public void add(Post post, After after){
         String path = "firebase.Store.addPost - ";
 
+//        mDb.collection(POST)
+//                .document()
+//                .set(post)
+//                .addOnSuccessListener(documentReference -> {
+//                    after.success(documentReference);
+//                    Log.d(TAG, path+"success");
+//                })
+//                .addOnFailureListener(e -> {
+//                    after.fail(e);
+//                    Log.w(TAG, path+"fail", e);
+//                });
+
         mDb.collection(POST)
-                .document()
-                .set(post)
-                .addOnSuccessListener(documentReference -> {
-                    after.success(documentReference);
-                    Log.d(TAG, path+"success");
-                })
-                .addOnFailureListener(e -> {
-                    after.fail(e);
-                    Log.w(TAG, path+"fail", e);
+                .add(post)
+                .addOnCompleteListener(postTask -> {
+                    String post_id = postTask.getResult().getId();
+
+                    DocumentSnapshot user_data =  mDb.collection(USER)
+                            .document(post.getUser_uid())
+                            .get().getResult();
+                    List<String> posted = (List<String>) user_data.get("posted");
+                    posted.add(post_id);
+
+                    mDb.collection(USER)
+                            .document(post.getUser_uid())
+                            .update("posted", posted).addOnCompleteListener(userTask -> {
+                                if (userTask.isSuccessful()){
+                                    after.success(userTask);
+                                    Log.d(TAG, path+"success");
+                                }
+                                else {
+                                    after.fail(userTask);
+                                    Log.w(TAG, path+"fail");
+                                }
+                            });
                 });
+    }
+
+    public Nutrient getIngredient(String name){
+        DocumentSnapshot ingredient_data = mDb.collection(INGREDIENT)
+                .document(name)
+                .get().getResult();
+        return new Nutrient(ingredient_data);
     }
 
     public void getAll(String collection, After after){

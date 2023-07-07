@@ -17,6 +17,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.recipx.recipx.R;
 import com.recipx.recipx.firebase.util.After;
 
+import java.util.List;
 import java.util.concurrent.Executor;
 
 public class User {
@@ -28,6 +29,9 @@ public class User {
     private String name;
     private String email;
     private Uri photoUrl;
+
+    private List<String> posted;
+    private List<String> liked;
 
     public User(Context mContext) {
         if (mAuth == null)

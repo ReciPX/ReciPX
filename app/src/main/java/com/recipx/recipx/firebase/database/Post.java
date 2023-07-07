@@ -3,11 +3,17 @@ package com.recipx.recipx.firebase.database;
 import com.google.firebase.firestore.FieldValue;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Post {
     private String title;
+    private List<String> ingredients;
     private String contents;
+    private Long protein;
+    private Long fat;
+    private Long carbohydrate;
+
 
     private String user_uid;
     private String user_name;
@@ -28,13 +34,24 @@ public class Post {
         this.likeCnt = likeCnt;
     }
 
-    public Post(String title, String contents) {
-        this.title = title;
-        this.contents = contents;
-    }
-
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setIngredients(List<String> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public void setProtein(Long protein) {
+        this.protein = protein;
+    }
+
+    public void setFat(Long fat) {
+        this.fat = fat;
+    }
+
+    public void setCarbohydrate(Long carbohydrate) {
+        this.carbohydrate = carbohydrate;
     }
 
     public void setContents(String contents) {
@@ -61,8 +78,29 @@ public class Post {
         this.likeCnt = likeCnt;
     }
 
+    public Post(String title, String contents) {
+        this.title = title;
+        this.contents = contents;
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public List<String> getIngredients() {
+        return ingredients;
+    }
+
+    public Long getProtein() {
+        return protein;
+    }
+
+    public Long getFat() {
+        return fat;
+    }
+
+    public Long getCarbohydrate() {
+        return carbohydrate;
     }
 
     public String getContents() {

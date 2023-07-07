@@ -9,12 +9,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.recipx.recipx.Community.Fragment_community;
 import com.recipx.recipx.Favorites.Fragment_Favorites;
 import com.recipx.recipx.MyPage.Fragment_MyPage;
+import com.recipx.recipx.PX_API.GetInfo;
 import com.recipx.recipx.Ranking.Fragment_Ranking;
 
 import com.recipx.recipx.databinding.ActivityMainBinding;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
 
+    Button api_test_btn;
     FragmentTransaction fragmentTransaction;
     FloatingActionButton fab;
     BottomNavigationView main_bottom;
@@ -39,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        api_test_btn = findViewById(R.id.api_test_btn);
+        api_test_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), GetInfo.class);
+                startActivity(intent);
+            }
+        });
         main_bottom = findViewById(R.id.main_bottom);
         main_bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

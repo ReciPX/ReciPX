@@ -4,6 +4,9 @@ plugins {
     //id 'com.google.reply' version '0.3.07'
 }
 
+Properties properties = new Properties();
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'com.recipx.recipx'
     compileSdk 33
@@ -16,6 +19,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "PX_API_KEY", properties['px_api_key'];
     }
 
     buildTypes {
@@ -30,6 +35,7 @@ android {
     }
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
 }

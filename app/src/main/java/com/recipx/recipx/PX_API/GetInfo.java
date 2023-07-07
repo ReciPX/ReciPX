@@ -62,13 +62,14 @@ public class GetInfo extends AppCompatActivity {
 
     // xml parsing part
     ArrayList<PX_Product> getPX_Product(){
-        ArrayList<PX_Product> productlist = new ArrayList<>();
-
+        int maxyear=-1,maxmonth=-1;
+        ArrayList<PX_Product> productlist_cost = new ArrayList<>();
+        ArrayList<PX_Product> productlist_cnt = new ArrayList<>();
         String key = BuildConfig.PX_API_KEY;
         String type = "xml";
         String service = "DS_MND_PX_PARD_PRDT_INFO";
         String startpoint = "0";
-        String endpoint = "10";
+        String endpoint = "2500";
 
         String queryUrl = "https://openapi.mnd.go.kr/"+key+"/"+type+"/"+service+"/"+startpoint+"/"+endpoint;
 
@@ -91,7 +92,6 @@ public class GetInfo extends AppCompatActivity {
 
                     case XmlPullParser.START_TAG:
                         tag= xpp.getName();//태그 이름 얻어오기
-                        Log.d("minseok","start!@!"+xpp.getName());
                         if(tag.equals("list_total_count")){
 
                         }
@@ -116,15 +116,29 @@ public class GetInfo extends AppCompatActivity {
                         else if(tag.equals("prdtnm")) {
                             xpp.next();
                             product.setTitle(xpp.getText());
-                            productlist.add(product);
+                            int nowyear = Integer.parseInt(product.getYear());
+                            int nowmonth = Integer.parseInt(product.getMonth());
+                            if(maxyear==nowyear){
+                                if(maxmonth==nowmonth){
+                                    productlist.add(product);
+                                }
+                                else if(maxmonth<nowmonth){
+
+                                }
+                            }
+                            else if(maxyear<nowyear) {
+                                maxyear = nowyear;
+                                productlist_cnt.clear();
+                                productlist_cost.clear();
+                            }
+
+
                         }
                         break;
                     case XmlPullParser.TEXT:
-                        Log.d("minseok","text!@!"+xpp.getText());
                         break;
 
                     case XmlPullParser.END_TAG:
-                        Log.d("minseok","end!@!"+xpp.getName());
                         break;
                 }
                 eventType= xpp.next();

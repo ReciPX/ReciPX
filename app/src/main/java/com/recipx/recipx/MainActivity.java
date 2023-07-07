@@ -17,7 +17,12 @@ import com.recipx.recipx.Favorites.Fragment_Favorites;
 import com.recipx.recipx.MyPage.Fragment_MyPage;
 import com.recipx.recipx.Ranking.Fragment_Ranking;
 
+import com.recipx.recipx.databinding.ActivityMainBinding;
+import com.recipx.recipx.test.Test;
+
 public class MainActivity extends AppCompatActivity {
+
+    ActivityMainBinding binding;
 
     FragmentTransaction fragmentTransaction;
     FloatingActionButton fab;
@@ -26,7 +31,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.testBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), Test.class);
+            startActivity(intent);
+        });
 
         main_bottom = findViewById(R.id.main_bottom);
         main_bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

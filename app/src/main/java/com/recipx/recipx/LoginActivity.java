@@ -44,13 +44,13 @@ public class LoginActivity extends AppCompatActivity {
 
             user.login(email, password, new After() {
                 @Override
-                public Object success(Object task) {
+                public Object success(Object result) {
                     Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
                     return null;
                 }
 
                 @Override
-                public Object fail(Object task) {
+                public Object fail(Object result) {
                     Toast.makeText(getApplicationContext(), "fail", Toast.LENGTH_SHORT).show();
                     return null;
                 }
@@ -68,13 +68,13 @@ public class LoginActivity extends AppCompatActivity {
 
             user.create(email, password, new After() {
                 @Override
-                public Object success(Object task) {
+                public Object success(Object result) {
                     Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
                     return null;
                 }
 
                 @Override
-                public Object fail(Object task) {
+                public Object fail(Object result) {
                     Toast.makeText(getApplicationContext(), "fail", Toast.LENGTH_SHORT).show();
                     return null;
                 }
@@ -83,13 +83,13 @@ public class LoginActivity extends AppCompatActivity {
         delete_btn.setOnClickListener(view -> {
             user.delete(new After() {
                 @Override
-                public Object success(Object task) {
+                public Object success(Object result) {
                     Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
                     return null;
                 }
 
                 @Override
-                public Object fail(Object task) {
+                public Object fail(Object result) {
                     Toast.makeText(getApplicationContext(), "fail", Toast.LENGTH_SHORT).show();
                     return null;
                 }

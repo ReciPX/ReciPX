@@ -26,7 +26,7 @@ public class Store {
     }
 
     public void add(Post post, After after){
-        String path = "firebase.Storage.addPost - ";
+        String path = "firebase.Store.addPost - ";
 
         mDb.collection(POST)
                 .document()
@@ -42,7 +42,7 @@ public class Store {
     }
 
     public void getAll(String collection, After after){
-        String path = "firebase.Storage.getAll - ";
+        String path = "firebase.Store.getAll - ";
 
         mDb.collection(collection)
                 .get()
@@ -61,7 +61,7 @@ public class Store {
     }
 
     public void getPostByTitle(String title, After after){
-        String path = "firebase.Storage.getPostByTitle - ";
+        String path = "firebase.Store.getPostByTitle - ";
 
         mDb.collection(POST)
                 .whereEqualTo("title", title)

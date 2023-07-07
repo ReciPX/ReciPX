@@ -25,8 +25,6 @@ public class User {
     private Context mContext;
     private String TAG;
 
-    private String providerId;
-    private String uid;
     private String name;
     private String email;
     private Uri photoUrl;
@@ -102,12 +100,12 @@ public class User {
         }
     }
 
-    public void updateProfile(String name, String imgUri, After after){
+    public void updateProfile(String name, Uri imgUri, After after){
         String path = "firebase.User.updateProfile - ";
 
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                 .setDisplayName(name)
-                .setPhotoUri(Uri.parse(imgUri))
+                .setPhotoUri(imgUri)
                 .build();
 
         FirebaseUser user = mAuth.getCurrentUser();
@@ -135,8 +133,6 @@ public class User {
 
         if (user != null) {
             for (UserInfo profile : user.getProviderData()) {
-                providerId = profile.getProviderId();
-                uid = profile.getUid();
                 name = profile.getDisplayName();
                 email = profile.getEmail();
                 photoUrl = profile.getPhotoUrl();
@@ -148,5 +144,28 @@ public class User {
 
     public boolean isLogin(){
         return (mAuth.getCurrentUser() != null);
+    }
+
+    public String getUid() {
+        String path = "firebase.User.getProfile - ";
+
+        if (mAuth.getCurrentUser() != null)
+            return mAuth.getCurrentUser().getUid();
+        else {
+            Log.d(TAG, path+"login first!");
+            return null;
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Uri getPhotoUrl() {
+        return photoUrl;
     }
 }

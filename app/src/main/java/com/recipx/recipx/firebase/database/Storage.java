@@ -26,7 +26,7 @@ public class Storage {
         String path = "firebase.Storage.uploadImage - ";
 
         StorageReference storageRef = mStorage.getReference();
-        StorageReference ref = storageRef.child(filepath+file.getLastPathSegment());
+        StorageReference ref = storageRef.child(filepath);
         UploadTask uploadTask = ref.putFile(file);
 
         uploadTask.addOnSuccessListener(taskSnapshot -> {

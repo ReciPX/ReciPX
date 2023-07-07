@@ -13,12 +13,12 @@ public class Post {
     private String user_name;
     private String user_imageUri;
 
-    private String timeStamp;
+    private Long timeStamp;
     private Long likeCnt;
 
     public Post(){}
 
-    public Post(String title, String contents, String user_uid, String user_name, String user_imageUri, String timeStamp, Long likeCnt) {
+    public Post(String title, String contents, String user_uid, String user_name, String user_imageUri, Long timeStamp, Long likeCnt) {
         this.title = title;
         this.contents = contents;
         this.user_uid = user_uid;
@@ -26,6 +26,11 @@ public class Post {
         this.user_imageUri = user_imageUri;
         this.timeStamp = timeStamp;
         this.likeCnt = likeCnt;
+    }
+
+    public Post(String title, String contents) {
+        this.title = title;
+        this.contents = contents;
     }
 
     public void setTitle(String title) {
@@ -48,7 +53,7 @@ public class Post {
         this.user_imageUri = user_imageUri;
     }
 
-    public void setTimeStamp(String timeStamp) {
+    public void setTimeStamp(Long timeStamp) {
         this.timeStamp = timeStamp;
     }
 
@@ -76,7 +81,7 @@ public class Post {
         return user_imageUri;
     }
 
-    public String getTimeStamp() {
+    public Long getTimeStamp() {
         return timeStamp;
     }
 

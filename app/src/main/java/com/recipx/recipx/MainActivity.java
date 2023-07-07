@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //네비게이션 바 버튼 누르면 동작하게
+                //네비게이션 fab 버튼 누르면 동작하게
                 switch(currentTab){
                     case 1:
                         break;
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else if(n==R.id.bottom_mypage) {
-            if(currentTab==4) {
+            if(currentTab!=4) {
                 Fragment_MyPage MyPage = new Fragment_MyPage();
                 fragmentTransaction.replace(R.id.main_frame, MyPage).commit();
                 currentTab = 4;

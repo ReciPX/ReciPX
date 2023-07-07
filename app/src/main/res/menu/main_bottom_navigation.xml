@@ -5,7 +5,7 @@
     <item
         android:id="@+id/bottom_community"
         android:enabled="true"
-        android:title="공유"
+        android:title="레시피"
         android:icon="@drawable/ic_launcher_background"
         android:checked="true"/>
 

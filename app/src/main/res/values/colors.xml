@@ -15,11 +15,11 @@
 
     <color name="UpCycle_Green">#A5BE00</color>
     <!--    <color name="UpCycle_Green">#50C074</color>-->
-    <color name="UpCycle_Green_Variation">#FF30BC71</color>
+    <color name="UpCycle_Green_Variation">#BEBB00</color>
     <color name="UpCycle_Green_Low">#93F4B2</color>
 
-    <color name="UpCycle_Green_Night">#21A54B</color>
-    <color name="UpCycle_Green_Variation_Night">#1B6A40</color>
+    <color name="UpCycle_Green_Night">#7AA5BE00</color>
+    <color name="UpCycle_Green_Variation_Night">#80BEBB00</color>
 
     <color name="border">#F6F6F6</color>
 </resources>

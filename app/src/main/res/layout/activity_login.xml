@@ -1,134 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToOutline="true"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:clipToOutline="true">
 
     <!-- Auto layout, variables, and unit scale are not yet supported -->
+
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
+
+
     <TextView
         android:id="@+id/recipx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="top"
         android:text="@string/recipx"
         android:textAppearance="@style/recipx"
-        android:gravity="top"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
-    <!-- Auto layout, variables, and unit scale are not yet supported -->
     <TextView
         android:id="@+id/text_login_id"
         android:layout_width="98dp"
         android:layout_height="42dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="196dp"
-        android:layout_marginLeft="28dp"
-        android:textStyle="bold"
         android:gravity="top"
         android:text="@string/some_id"
-        android:textAppearance="@style/some_id" />
+        android:textAppearance="@style/some_id"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
 
     <ImageView
         android:id="@+id/image_user"
         android:layout_width="15dp"
         android:layout_height="18.75dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="30dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="290dp"
-        android:src="@drawable/icon_user" />
+        android:src="@drawable/icon_user"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <ImageView
         android:id="@+id/image_padlock"
         android:layout_width="15dp"
         android:layout_height="18.75dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="30dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="366dp"
-        android:src="@drawable/icon_padlock" />
+        android:src="@drawable/icon_padlock"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
-    <!-- Auto layout, variables, and unit scale are not yet supported -->
 
     <EditText
         android:id="@+id/editText_email"
         android:layout_width="330dp"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="55dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="275dp"
+        android:layout_marginStart="8dp"
         android:ems="10"
         android:hint="아이디"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/image_user"
+        app:layout_constraintStart_toEndOf="@+id/image_user"
+        app:layout_constraintTop_toTopOf="@+id/image_user" />
 
     <EditText
         android:id="@+id/editText_password"
         android:layout_width="330dp"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="55dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="350dp"
+        android:layout_marginStart="8dp"
         android:ems="10"
         android:hint="비밀번호"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="@+id/image_padlock"
+        app:layout_constraintStart_toEndOf="@+id/image_padlock"
+        app:layout_constraintTop_toTopOf="@+id/image_padlock" />
 
     <android.widget.Button
         android:id="@+id/button_login"
-        android:layout_width="351dp"
-        android:layout_height="70dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="452dp"
-        android:text="로그인"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/rectangle_login"
-        />
-
-
-    <Button
-        android:id="@+id/button_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="550dp"
-        android:layout_marginLeft="100dp"
-        android:text="Logout"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rectangle_login"
+        android:text="로그인"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_login" />
+        app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
     <TextView
         android:id="@+id/button_create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="530dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:text="회원가입"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_logout" />
+        app:layout_constraintTop_toBottomOf="@+id/button_login" />
 
-    <Button
-        android:id="@+id/button_delete"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="550dp"
-        android:text="Delete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_create" />
-</RelativeLayout>
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.48" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+</androidx.constraintlayout.widget.ConstraintLayout>

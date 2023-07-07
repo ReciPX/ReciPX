@@ -1,0 +1,36 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--    하단바에 들어갈 문자들 설정 -->
+    <item
+        android:id="@+id/bottom_community"
+        android:enabled="true"
+        android:title="공유"
+        android:icon="@drawable/ic_launcher_background"
+        android:checked="true"/>
+
+    <item
+        android:id="@+id/bottom_ranking"
+        android:enabled="true"
+        android:title="랭킹"
+        android:icon="@drawable/ic_launcher_background"
+        />
+    <item android:id="@+id/blank"
+        android:title=""
+        android:enabled="false"/>
+    <item
+        android:id="@+id/bottom_favorites"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="즐겨찾기"
+        />
+    <item
+        android:id="@+id/bottom_mypage"
+        android:enabled="true"
+        android:title="마이페이지"
+        android:icon="@drawable/ic_launcher_background"
+        />
+</menu>
+
+
+

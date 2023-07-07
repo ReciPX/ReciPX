@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#50C074" android:state_checked="true" />
+    <item android:color="#CCCCCC" android:state_checked="false" />
+</selector>
+    <!-- 네비게이션바 밑에 색깔 선택된 탭은 초록 아니면 흰색-->

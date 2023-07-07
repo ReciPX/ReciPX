@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#9903DAC5</color>
+    <color name="teal_700">#99018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparentColor">#00FFFFFF</color>
+    <color name="blue">#FF2F98F3</color>
+    <color name="red">#FF0000</color>
+
+    <color name="blackborder">#A6A6A6</color>
+
+    <color name="UpCycle_Green">#56CD7D</color>
+    <!--    <color name="UpCycle_Green">#50C074</color>-->
+    <color name="UpCycle_Green_Variation">#FF30BC71</color>
+    <color name="UpCycle_Green_Low">#93F4B2</color>
+
+    <color name="UpCycle_Green_Night">#21A54B</color>
+    <color name="UpCycle_Green_Variation_Night">#1B6A40</color>
+
+    <color name="border">#F6F6F6</color>
 </resources>

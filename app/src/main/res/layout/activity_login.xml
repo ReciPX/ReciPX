@@ -1,72 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clipToOutline="true"
+    android:background="#FFFFFF">
 
-    <Button
-        android:id="@+id/button_login"
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
+    <TextView
+        android:id="@+id/recipx"
+        android:layout_width="84dp"
+        android:layout_height="23dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
+        android:text="@string/recipx"
+        android:textAppearance="@style/recipx"
+        android:gravity="top"
+        />
+
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
+    <TextView
+        android:id="@+id/text_login_id"
+        android:layout_width="98dp"
+        android:layout_height="42dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="246dp"
+        android:layout_marginLeft="28dp"
+        android:textStyle="bold"
+        android:gravity="top"
+        android:text="@string/some_id"
+        android:textAppearance="@style/some_id" />
+
+
+    <ImageView
+        android:id="@+id/image_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_password" />
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="339dp"
+        tools:src="@drawable/icon_user" />
+
+    <ImageView
+        android:id="@+id/image_padlock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="34dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="416dp"
+        tools:src="@drawable/icon_padlock" />
+
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
 
     <EditText
         android:id="@+id/editText_email"
-        android:layout_width="0dp"
+        android:layout_width="330dp"
         android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="325dp"
         android:ems="10"
-        android:hint="write E-mail"
+        android:hint="아이디"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/editText_password"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView_email" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText_password"
-        android:layout_width="0dp"
+        android:layout_width="330dp"
         android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="400dp"
         android:ems="10"
-        android:hint="write password"
+        android:hint="비밀번호"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView_password"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <TextView
-        android:id="@+id/textView_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="E-mail"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editText_email"
-        app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="351dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="612dp"
+        android:text="로그인"
+        android:textSize="20sp"
+        android:background="@drawable/rectangle_login"
+        />
 
-    <TextView
-        android:id="@+id/textView_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editText_password"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="800dp"
         android:text="Logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_login" />
 
-    <Button
+    <TextView
         android:id="@+id/button_create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="700dp"
+        android:text="회원가입"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_logout" />
@@ -75,8 +123,9 @@
         android:id="@+id/button_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="750dp"
         android:text="Delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_create" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

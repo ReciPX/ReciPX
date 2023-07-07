@@ -1,12 +1,15 @@
 package com.recipx.recipx;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.recipx.recipx.Community.Fragment_community;
 import com.recipx.recipx.Favorites.Fragment_Favorites;
@@ -17,12 +20,21 @@ public class MainActivity extends AppCompatActivity {
 
     FragmentTransaction fragmentTransaction;
     FloatingActionButton fab;
+    BottomNavigationView main_bottom;
     int currentTab = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        main_bottom = findViewById(R.id.main_bottom);
+        main_bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                setFragment(item.getItemId());
+                return true;
+            }
+        });
         fab = (FloatingActionButton) findViewById(R.id.floating_btn);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

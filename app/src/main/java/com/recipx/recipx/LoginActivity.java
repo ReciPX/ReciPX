@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.recipx.recipx.firebase.user.User;
@@ -16,7 +17,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Button login_btn;
     Button logout_btn;
-    Button create_btn;
+    TextView create_btn;
     Button delete_btn;
     EditText email_et;
     EditText password_et;

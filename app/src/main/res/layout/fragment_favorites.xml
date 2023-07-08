@@ -5,39 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:id="@+id/favorites_linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_alignParentTop="true"
-            android:background="@color/titlebackground"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:src="@drawable/titlepic" />
-        </LinearLayout>
-
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_favorites"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:paddingBottom="40dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/favorites_linearLayout"
-            tools:listitem="@layout/favorites_item"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:background="@color/border"
+            tools:listitem="@layout/favorites_item" />
 
 </FrameLayout>

@@ -41,9 +41,9 @@ public class Top_PX_Product extends AppCompatActivity {
             @Override
             public void run() {
                 // TODO Auto-generated method stub
-                productlist = getPX_Product();
-
-
+                if(productlist==null){
+                    productlist = getPX_Product();
+                }
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

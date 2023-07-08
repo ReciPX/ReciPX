@@ -1,6 +1,7 @@
 package com.recipx.recipx.PX_API;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,9 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.recipx.recipx.BuildConfig;
 import com.recipx.recipx.R;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -43,6 +48,19 @@ public class Top_PX_Product extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 if(productlist==null){
                     productlist = getPX_Product();
+                    for(int i =0;i<=1;i++){
+                        for(PX_Product P:productlist.get(i)){
+                            // 웹 크롤링하여 이미지 URL 가져오기
+                            if(P.getTitle().contains("테라")||P.getTitle().contains("참이슬")||P.getTitle().contains("카스")){
+                                P.setSrc(P.getTitle());
+                            }
+                            else{
+                                String imageURL = getImageURLFromWeb(P.getTitle());
+                                P.setSrc(imageURL);
+                                Log.d("minseok",P.getTitle()+" "+imageURL);
+                            }
+                        }
+                    }
                 }
                 runOnUiThread(new Runnable() {
                     @Override
@@ -74,7 +92,7 @@ public class Top_PX_Product extends AppCompatActivity {
         }).start();
     }
     ArrayList<ArrayList<PX_Product>> getPX_Product(){
-        int maxyear=-1, maxmonth=-1;
+        int maxyear=0, maxmonth=0;
         ArrayList<ArrayList<PX_Product>> productlist=new ArrayList<>();
         ArrayList<PX_Product> productlist_cost = new ArrayList<>();
         ArrayList<PX_Product> productlist_cnt = new ArrayList<>();
@@ -132,7 +150,7 @@ public class Top_PX_Product extends AppCompatActivity {
                             int nowyear = Integer.parseInt(product.getYear());
                             int nowmonth = Integer.parseInt(product.getMonth());
                             String standard = product.getStandard();
-                            if (maxyear == -1) {
+                            if (maxyear == 0) {
                                 maxyear = nowyear;
                                 maxmonth = nowmonth;
                             }
@@ -176,5 +194,22 @@ public class Top_PX_Product extends AppCompatActivity {
         productlist.add(productlist_cost);
         year = maxyear; month = maxmonth;
         return productlist;
+    }
+
+    private String getImageURLFromWeb(String title){
+        try{
+
+            String targetURL ="https://search.naver.com/search.naver?where=nexearch&sm=tab_jum&query="+title;
+            //"https://search.naver.com/search.naver?where=image&sm=tab_jum&query="+title;
+
+            Document doc = Jsoup.connect(targetURL).get();
+            Element imageElement = doc.selectFirst("img");
+            String imageURL = imageElement.attr("src");
+
+            return imageURL;
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        return "";
     }
 }

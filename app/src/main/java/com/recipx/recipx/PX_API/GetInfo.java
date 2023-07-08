@@ -22,7 +22,7 @@ public class GetInfo extends AppCompatActivity {
     String home_data;
 
     PX_Product product;
-    ArrayList<PX_Product> productlist;
+    ArrayList<ArrayList<PX_Product>> productlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class GetInfo extends AppCompatActivity {
                 // 건축물 API
                 productlist = getPX_Product();
 
-                for (PX_Product i : productlist) { // for문을 통한 전체출력
+                for (PX_Product i : productlist.get(1)) { // for문을 통한 전체출력
                     home_data+=i.getTitle();
                     home_data+=i.getYear();
                     home_data+=i.getMonth();
@@ -61,8 +61,9 @@ public class GetInfo extends AppCompatActivity {
     }
 
     // xml parsing part
-    ArrayList<PX_Product> getPX_Product(){
-        int maxyear=-1,maxmonth=-1;
+    ArrayList<ArrayList<PX_Product>> getPX_Product(){
+        int maxyear=-1, maxmonth=-1;
+        ArrayList<ArrayList<PX_Product>> productlist=new ArrayList<>();
         ArrayList<PX_Product> productlist_cost = new ArrayList<>();
         ArrayList<PX_Product> productlist_cnt = new ArrayList<>();
         String key = BuildConfig.PX_API_KEY;
@@ -118,21 +119,33 @@ public class GetInfo extends AppCompatActivity {
                             product.setTitle(xpp.getText());
                             int nowyear = Integer.parseInt(product.getYear());
                             int nowmonth = Integer.parseInt(product.getMonth());
+                            String standard = product.getStandard();
+                            if (maxyear == -1) {
+                                maxyear = nowyear;
+                                maxmonth = nowmonth;
+                            }
                             if(maxyear==nowyear){
                                 if(maxmonth==nowmonth){
-                                    productlist.add(product);
+                                    if(standard.equals("수량"))productlist_cnt.add(product);
+                                    else if(standard.equals("금액"))productlist_cost.add(product);
                                 }
                                 else if(maxmonth<nowmonth){
-
+                                    maxyear = nowyear;
+                                    maxmonth = nowmonth;
+                                    productlist_cnt.clear();
+                                    productlist_cost.clear();
+                                    if(standard.equals("수량"))productlist_cnt.add(product);
+                                    else if(standard.equals("금액"))productlist_cost.add(product);
                                 }
                             }
                             else if(maxyear<nowyear) {
                                 maxyear = nowyear;
+                                maxmonth = nowmonth;
                                 productlist_cnt.clear();
                                 productlist_cost.clear();
+                                if(standard.equals("수량"))productlist_cnt.add(product);
+                                else if(standard.equals("금액"))productlist_cost.add(product);
                             }
-
-
                         }
                         break;
                     case XmlPullParser.TEXT:
@@ -147,6 +160,8 @@ public class GetInfo extends AppCompatActivity {
         } catch (Exception e) {
             // TODO Auto-generated catch blocke.printStackTrace();
         }
-        return productlist;//StringBuffer 문자열 객체 반환
+        productlist.add(productlist_cnt);
+        productlist.add(productlist_cost);
+        return productlist;
     }
 }

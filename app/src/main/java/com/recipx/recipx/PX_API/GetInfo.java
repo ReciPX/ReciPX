@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class GetInfo extends AppCompatActivity {
     TextView home_text;
     String home_data;
+    //git
 
     PX_Product product;
     ArrayList<ArrayList<PX_Product>> productlist;

@@ -22,4 +22,5 @@
     <color name="UpCycle_Green_Variation_Night">#80BEBB00</color>
 
     <color name="border">#F6F6F6</color>
+    <color name="titlebackground">#333033</color>
 </resources>

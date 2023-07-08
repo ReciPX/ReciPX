@@ -1,9 +1,9 @@
 package com.recipx.recipx.PX_API;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -26,14 +26,17 @@ public class Top_PX_Product extends AppCompatActivity {
     PX_Product_Adapter adapter;
 
     Button standard_btn;
+    TextView info;
     PX_Product product;
     ArrayList<ArrayList<PX_Product>> productlist;
+    int year=0; int month=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.top_px_product);
         px_product_recyclerview = findViewById(R.id.px_product_recyclerview);
         standard_btn = findViewById(R.id.standard_btn);
+        info = findViewById(R.id.tv_Year_Month);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -46,6 +49,7 @@ public class Top_PX_Product extends AppCompatActivity {
                     public void run() {
                         // TODO Auto-generated method stub
                         // 초기에는 "수량" 항목을 보여줌
+                        info.setText(year+"년 "+month+"월");
                         adapter = new PX_Product_Adapter(getApplicationContext(), productlist.get(0));
                         px_product_recyclerview.setAdapter(adapter);
                         standard_btn.setOnClickListener(new View.OnClickListener() {
@@ -170,6 +174,7 @@ public class Top_PX_Product extends AppCompatActivity {
         }
         productlist.add(productlist_cnt);
         productlist.add(productlist_cost);
+        year = maxyear; month = maxmonth;
         return productlist;
     }
 }

@@ -1,6 +1,9 @@
 package com.recipx.recipx.PX_API;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -22,6 +25,7 @@ public class Top_PX_Product extends AppCompatActivity {
     RecyclerView px_product_recyclerview;
     PX_Product_Adapter adapter;
 
+    Button standard_btn;
     PX_Product product;
     ArrayList<ArrayList<PX_Product>> productlist;
     @Override
@@ -29,15 +33,11 @@ public class Top_PX_Product extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.top_px_product);
         px_product_recyclerview = findViewById(R.id.px_product_recyclerview);
-
+        standard_btn = findViewById(R.id.standard_btn);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 // TODO Auto-generated method stub
-
-                // 아래 메소드를 호출하여 XML data를 파싱해서 String 객체로 얻어오기
-
-                // 건축물 API
                 productlist = getPX_Product();
 
 
@@ -45,11 +45,25 @@ public class Top_PX_Product extends AppCompatActivity {
                     @Override
                     public void run() {
                         // TODO Auto-generated method stub
-                        adapter = new PX_Product_Adapter(getApplicationContext(),productlist.get(0));
-
+                        // 초기에는 "수량" 항목을 보여줌
+                        adapter = new PX_Product_Adapter(getApplicationContext(), productlist.get(0));
+                        px_product_recyclerview.setAdapter(adapter);
+                        standard_btn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if(standard_btn.getText().equals("금액")){
+                                    standard_btn.setText("수량");
+                                    adapter = new PX_Product_Adapter(getApplicationContext(),productlist.get(1));
+                                }
+                                else{
+                                    standard_btn.setText("금액");
+                                    adapter = new PX_Product_Adapter(getApplicationContext(),productlist.get(0));
+                                }
+                                px_product_recyclerview.setAdapter(adapter);
+                            }
+                        });
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2,GridLayoutManager.VERTICAL,false);
                         px_product_recyclerview.setLayoutManager(gridLayoutManager);
-                        px_product_recyclerview.setAdapter(adapter);
                     }
                 });
             }

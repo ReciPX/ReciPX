@@ -3,18 +3,18 @@ package com.recipx.recipx.PX_API;
 public class PX_Product {
     private String title;
     private String standard;
-    private String src;
+    private Integer src;
     private String year;
     private String month;
 
     public PX_Product(){
         this.title = "";
         this.standard = "";
-        this.src = "";
+        this.src = 0;
         this.year = "";
         this.month = "";
     }
-    public PX_Product(String title, String standard, String src, String year, String month) {
+    public PX_Product(String title, String standard, Integer src, String year, String month) {
         this.title = title;
         this.standard = standard;
         this.src = src;
@@ -38,11 +38,11 @@ public class PX_Product {
         this.standard = standard;
     }
 
-    public String getSrc() {
+    public Integer getSrc() {
         return src;
     }
 
-    public void setSrc(String src) {
+    public void setSrc(Integer src) {
         this.src = src;
     }
 

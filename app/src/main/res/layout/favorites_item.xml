@@ -11,29 +11,29 @@
     <!-- 무조건 wrap_content해야한다 그래야 리스트 하나가 가득 안차고 여러개 가능 -->
 
     <ImageView
-        android:id="@+id/community_post_iv"
+        android:id="@+id/favorites_post_iv"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/community_post_title"
+        app:layout_constraintRight_toLeftOf="@id/favorites_post_title"
         tools:srcCompat="@tools:sample/avatars"/>
 
     <ProgressBar
-        android:id="@+id/community_item_progress_circular"
+        android:id="@+id/favorites_item_progress_circular"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="6dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@id/community_post_iv"
-        app:layout_constraintRight_toRightOf="@id/community_post_iv"
-        app:layout_constraintLeft_toLeftOf="@id/community_post_iv"
-        app:layout_constraintTop_toTopOf="@id/community_post_iv"/>
+        app:layout_constraintBottom_toBottomOf="@id/favorites_post_iv"
+        app:layout_constraintRight_toRightOf="@id/favorites_post_iv"
+        app:layout_constraintLeft_toLeftOf="@id/favorites_post_iv"
+        app:layout_constraintTop_toTopOf="@id/favorites_post_iv"/>
 
     <TextView
-        android:id="@+id/community_post_title"
+        android:id="@+id/favorites_post_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -44,38 +44,38 @@
         android:maxLines="1"
         android:text="게시물 제목"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/community_personal_id"
-        app:layout_constraintLeft_toRightOf="@id/community_post_iv"
+        app:layout_constraintBottom_toTopOf="@+id/favorites_personal_id"
+        app:layout_constraintLeft_toRightOf="@id/favorites_post_iv"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/community_personal_id"
+        android:id="@+id/favorites_personal_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="6dp"
         android:baselineAligned="false"
         android:text="사용자 ID"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/community_post_title"
-        app:layout_constraintTop_toBottomOf="@id/community_post_title" />
+        app:layout_constraintLeft_toLeftOf="@id/favorites_post_title"
+        app:layout_constraintTop_toBottomOf="@id/favorites_post_title" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/community_item_likeImage_likeButton"
+        android:id="@+id/favorites_item_likeImage_likeButton"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:adjustViewBounds="true"
-        app:layout_constraintRight_toLeftOf="@id/community_btn_expand_toggle"
+        app:layout_constraintRight_toLeftOf="@id/favorites_btn_expand_toggle"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/like_selector"/>
 
     <ImageView
-        android:id="@+id/community_btn_expand_toggle"
+        android:id="@+id/favorites_btn_expand_toggle"
         android:src="@drawable/circle_plus"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_weight="0"
         android:layout_marginEnd="6dp"
+        android:layout_weight="0"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

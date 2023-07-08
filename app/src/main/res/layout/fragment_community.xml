@@ -31,6 +31,7 @@
             android:id="@+id/title_community1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="40dp"
             android:layout_above="@+id/layout_upload"
             android:layout_below="@+id/Title_tab"
             android:background="@color/border"

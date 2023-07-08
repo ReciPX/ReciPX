@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +16,7 @@ import com.recipx.recipx.Community.Fragment_community;
 import com.recipx.recipx.Favorites.Fragment_Favorites;
 import com.recipx.recipx.MyPage.Fragment_MyPage;
 import com.recipx.recipx.PX_API.GetInfo;
+import com.recipx.recipx.PX_API.Top_PX_Product;
 import com.recipx.recipx.Ranking.Fragment_Ranking;
 
 import com.recipx.recipx.databinding.ActivityMainBinding;
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
 
     Button api_test_btn;
+    Button px_product_test;
     FragmentTransaction fragmentTransaction;
     FloatingActionButton fab;
     BottomNavigationView main_bottom;
@@ -48,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), GetInfo.class);
                 startActivity(intent);
+            }
+        });
+        px_product_test = findViewById(R.id.px_product_test);
+        px_product_test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(getApplicationContext(), Top_PX_Product.class);
+                startActivity(it);
             }
         });
         main_bottom = findViewById(R.id.main_bottom);

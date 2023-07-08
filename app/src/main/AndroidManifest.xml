@@ -31,6 +31,10 @@
             android:name=".PX_API.GetInfo"
             android:exported="false" />
         <activity
+            android:name=".PX_API.Top_PX_Product"
+            android:exported="false" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

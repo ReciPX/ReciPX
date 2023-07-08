@@ -20,7 +20,6 @@ import java.util.ArrayList;
 public class GetInfo extends AppCompatActivity {
     TextView home_text;
     String home_data;
-    //git
 
     PX_Product product;
     ArrayList<ArrayList<PX_Product>> productlist;
@@ -43,7 +42,7 @@ public class GetInfo extends AppCompatActivity {
                 // 건축물 API
                 productlist = getPX_Product();
 
-                for (PX_Product i : productlist.get(1)) { // for문을 통한 전체출력
+                for (PX_Product i : productlist.get(0)) { // for문을 통한 전체출력
                     home_data+=i.getTitle();
                     home_data+=i.getYear();
                     home_data+=i.getMonth();
